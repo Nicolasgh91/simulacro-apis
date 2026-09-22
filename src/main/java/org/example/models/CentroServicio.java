@@ -17,7 +17,7 @@ public class CentroServicio {
     @Column(nullable = false)
     private String email;
     private String direccion;
-    @OneToMany (mappedBy = "centro")
+    @OneToMany (mappedBy = "centroServicio")
     private List<Servicio> servicios = new ArrayList<>();
 
     public CentroServicio(Long id, String cuit, String razonSocial, String email, String direccion, List<Servicio> servicios) {
@@ -29,5 +29,55 @@ public class CentroServicio {
         this.servicios = servicios;
     }
 
+    public CentroServicio(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCuit() {
+        return cuit;
+    }
+
+    public void setCuit(String cuit) {
+        this.cuit = cuit;
+    }
+
+    public String getRazonSocial() {
+        return razonSocial;
+    }
+
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
 }
