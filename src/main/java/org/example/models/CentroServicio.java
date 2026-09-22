@@ -80,4 +80,20 @@ public class CentroServicio {
     public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
     }
+
+    public void cambioDeAceite(){
+        System.out.println("Cambio de aceite realizado.");
+    }
+
+    public void alineacion(){
+        System.out.println("Alineacion y balanceo realizado.");
+    }
+
+    public void diagnostico(){
+        System.out.println("El auto no da más, necesita servicio completo.");
+    }
+
+    public void revisionGeneral(){
+        System.out.println("Las cubiertas están gastadas. Los frenos no frenan y el acelerador no tiene tope.");
+    }
 }

@@ -22,19 +22,32 @@ public class DemoDataLoader {
 
         return args -> {
 
-            //Primero creo la clase "padre" el centro
-            CentroServicio centroServicio = new CentroServicio();
-            centroServicio.setCuit("20202020");
-            centroServicio.setDireccion("calle 1");
-            centroServicio.setRazonSocial("Centro SRL");
-            centroServicio.setEmail("contacto@centrosrl.com");
-            centroServicioRepository.save(centroServicio);
+            //1. creo la clase "padre" el centro
+            CentroServicio centroServicio1 = new CentroServicio();
+            centroServicio1.setCuit("20202020");
+            centroServicio1.setDireccion("calle 1");
+            centroServicio1.setRazonSocial("Centro SRL");
+            centroServicio1.setEmail("contacto@centrosrl.com");
+            centroServicioRepository.save(centroServicio1);
+            System.out.println("Centro de servicios creado y registrado con éxito!");
 
-
-            ServicioDTO servicio = new ServicioDTO(centroServicio.getCuit(),"cambiar aceite","nuevo nuevo", 120,new BigDecimal(20000));
+            // 2. Creo un servicio para poder ofrecer distintos productos (servicios valga la redundancia)
+            ServicioDTO servicio = new ServicioDTO(centroServicio1.getCuit(),"cambiar aceite","reemplazo completo de aceite y filtros", 120,new BigDecimal(20000));
             servicioService.registrarServicio(servicio);
+            System.out.println("Servicio creado y registrado con éxito!");
 
-        }
+            // pongo a prueba las validaciones
+            try {
+                ServicioDTO servicioTest = new ServicioDTO(centroServicio1.getCuit(),"precio negativo","test",10,new BigDecimal(0) );
+                servicioService.registrarServicio(servicioTest);
+            } catch (Exception e) {
+                System.out.println("Se intengó cargar un servicio con precio inválido: " + e.getMessage());
+            }
+
+
+
+
+        };
     }
 
 

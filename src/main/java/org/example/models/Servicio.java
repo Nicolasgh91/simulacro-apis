@@ -78,4 +78,8 @@ public class Servicio {
     public void setCentroServicio(CentroServicio centroServicio) {
         this.centroServicio = centroServicio;
     }
+
+    public void otorgarTurno(){
+        System.out.println("Turno asignado. Lo esperamos en el día y horario pactado. Vuelva prontos.");
+    }
 }
