@@ -7,7 +7,8 @@ import org.example.models.Servicio;
 import org.example.repository.CentroServicioRepository;
 import org.example.repository.ServicioRepository;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 import java.math.BigDecimal;
 
 @Service
@@ -24,10 +25,9 @@ public class ServicioService {
     public Servicio registrarServicio(ServicioDTO dto){
         CentroServicio centroServicio = centroServicioRepository.findByCuit(dto.getCuitCentro());
 
-        if (centroServicio == null){
-            throw new RuntimeException("No existe el centro buscado");
+        if (centroServicio == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No existe el centro buscado");
         }
-
         if (dto.getPrecio().compareTo(BigDecimal.ZERO) <= 0){
             throw new RuntimeException("Por favor indique un valor mayor a 0");
         }
